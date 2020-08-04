@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <label class="mr-sm-2 sr-only" for="category">Category</label>
+    <select class="custom-select mr-sm-2" id="category">
+      <option selected>類別...</option>
+      <option value="family">家居物業</option>
+      <option value="transportation">交通外出</option>
+      <option value="entertainment">休閒娛樂</option>
+      <option value="food">餐飲食品</option>
+      <option value="other">其他</option>
+    </select>
+  </div>
+  <div class="totalAmount m-5">
+    <span>總金額：</span>
+    <div class="totalAmountNumber">
+      <h2> 12345</h2>
+    </div>
+  </div>
+  <ul class="list-group">
+    {{!-- {{#each todos}} --}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto mr-auto">
+
+          <h4 style="display: inline; vertical-align: middle;">
+            完成AC老爸私房錢{{!-- {{this.name}} --}}
+          </h4>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-success" href="/edit">修改支出</a>
+          <form action="/delete" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">刪除</button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {{!-- {{/each}} --}}
+  </ul>
+  <div class="row justify-content-center">
+    <div class="mt-3">
+      <a class="btn btn-primary" href="/new">新增支出</a>
+    </div>
+  </div>
+</div>
