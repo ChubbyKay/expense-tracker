@@ -1,3 +1,29 @@
+/* index page */
+.list-group-item {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.list-name {
+  font-size: 20px;
+}
+
+.list-date {
+  font-size: 10px;
+}
+
+.category-icon {
+  font-size: 25px;
+}
+
+.list-amount {
+  font-size: 20px;
+}
+
+
+/* new & edit page */
 input {
   height: 30px;
   width: 200px;
