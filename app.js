@@ -28,14 +28,20 @@ app.use(express.static('public'))
 
 
 app.get('/', (req, res) => {
-  //   // res.render('index')
   Record.find()
     .lean()
-    .then(record => res.render('index', { record }))
+    .then(record => {
+      let totalAmount = 0
+      for (let i = 0; i < record.length; i++) {
+        totalAmount += record[i].amount
+      }
+      Category.find()
+        .lean()
+        .then(category => { res.render('index', { category, totalAmount, record }) })
+        .catch(error => console.error(error))
+    })
     .catch(error => console.error(error))
-
 })
-
 
 
 app.get('/:id/edit', (req, res) => {

@@ -18,7 +18,7 @@
   <div class="totalAmount m-5">
     <span>總金額：</span>
     <div class="row justify-content-center">
-      <h2> 12345</h2>
+      <h2> {{totalAmount}}</h2>
     </div>
   </div>
 
@@ -29,29 +29,33 @@
       {{#each record}}
       <li class="list-group-item">
 
-        <a href="/record/{{ this._id }}" class="text-secondary">
-          <div class="list-left">
-            <div class="category-icon"><i class="{{#each category}}{{this.categoryIcon}}{{/each}}"></i></div>
+        {{!-- <a href="/record/{{ this._id }}" class="text-secondary"> --}}
+        <div class="list-left">
+          <div class="category-icon">
+            {{#each category}}
+            <i class="">{{this.categoryIcon}}</i>
+            {{/each}}
           </div>
+        </div>
 
 
-          <div class="list-middle">
-            <div class="list-name">{{this.name}}</div>
-            <div class="list-date">{{this.date}}</div>
-          </div>
+        <div class="list-middle">
+          <div class="list-name">{{this.name}}</div>
+          <div class="list-date">{{this.date}}</div>
+        </div>
 
 
-          <div class="list-right">
-            <div class="list-amount ml-2">{{this.amount}}</div>
-          </div>
-          <div class="list-button">
-            <a class="btn btn-success" href="records/{{ this._id }}/edit">修改</a>
-            <form action="/delete/{{this._id}}" method="POST" style="display: inline;">
-              <button class="btn btn-danger ml-2" type="submit">刪除</button>
-            </form>
-          </div>
+        <div class="list-right">
+          <div class="list-amount ml-2">{{this.amount}}</div>
+        </div>
+        <div class="list-button">
+          <a class="btn btn-success" href="records/{{ this._id }}/edit">修改</a>
+          <form action="/delete/{{this._id}}" method="POST" style="display: inline;">
+            <button class="btn btn-danger ml-2" type="submit">刪除</button>
+          </form>
+        </div>
       </li>
-      </a>
+      {{!-- </a> --}}
       {{/each}}
 
     </div>
