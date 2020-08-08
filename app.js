@@ -10,13 +10,6 @@ const Category = require('./models/category')
 const app = express()
 const port = 3000
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
-
-app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(methodOverride('_method'))
-
 mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
@@ -29,6 +22,12 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 // index page
 app.get('/', (req, res) => {
@@ -70,7 +69,7 @@ app.get('/:id/edit', (req, res) => {
 })
 
 // edit update function
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => {
@@ -82,7 +81,7 @@ app.post('/records/:id/edit', (req, res) => {
 })
 
 // delete
-app.post('/records/:id/delete', (req, res) => {
+app.delete('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())

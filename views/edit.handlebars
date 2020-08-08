@@ -4,7 +4,7 @@
 
     <div class="container mt-4">
       <div class="row justify-content-center">
-        <form action="/records/{{record._id}}/edit" method="POST">
+        <form action="/records/{{record._id}}?_method=PUT" method="POST">
 
           <label for="name">名稱*：</label>
           <input type="text" placeholder="樂透" id="name" name="name" value="{{ record.name }}"><br><br>
