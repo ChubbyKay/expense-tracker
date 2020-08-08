@@ -49,7 +49,7 @@
           <div class="list-amount ml-2">{{this.amount}}</div>
         </div>
         <div class="list-button">
-          <a class="btn btn-success" href="records/{{ this._id }}/edit">修改</a>
+          <a class="btn btn-success" href="/{{ this._id }}/edit">修改</a>
           <form action="/delete/{{this._id}}" method="POST" style="display: inline;">
             <button class="btn btn-danger ml-2" type="submit">刪除</button>
           </form>

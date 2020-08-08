@@ -2,6 +2,8 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
 const Record = require('./models/record')
 const Category = require('./models/category')
 
@@ -10,7 +12,10 @@ const port = 3000
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
+app.use(express.static('public'))
 
 mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -24,9 +29,8 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-app.use(express.static('public'))
 
-
+// index page
 app.get('/', (req, res) => {
   Record.find()
     .lean()
@@ -38,22 +42,30 @@ app.get('/', (req, res) => {
       Category.find()
         .lean()
         .then(category => { res.render('index', { category, totalAmount, record }) })
-        .catch(error => console.error(error))
+        .catch(error => console.log(error))
     })
-    .catch(error => console.error(error))
+    .catch(error => console.log(error))
 })
 
-
-app.get('/:id/edit', (req, res) => {
-  res.render('edit')
-  // return Record.findById(id)
-  //   .lean()
-  //   .then((record) => res.render('edit', { record }))
-  //   .catch(error => console.log(error))
-})
-
+// create page
 app.get('/new', (req, res) => {
   res.render('new')
+})
+
+// create function
+app.post('/', (req, res) => {
+  const { name, category, date, amount } = req.body
+  return Record.create({ name, category, date, amount })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// edit 
+app.get('/:id/edit', (req, res) => {
+  return Record.findById(id)
+    .lean()
+    .then((record) => res.render('edit', { record }))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {
