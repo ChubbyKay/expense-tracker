@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 
 const Record = require('./models/record')
 const Category = require('./models/category')
+// const routes = require('./routes')
 
 const app = express()
 const port = 3000
@@ -28,6 +29,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+// app.use(routes)
 
 // index page
 app.get('/', (req, res) => {
@@ -47,12 +49,12 @@ app.get('/', (req, res) => {
 })
 
 // create page
-app.get('/new', (req, res) => {
+app.get('/records/new', (req, res) => {
   res.render('new')
 })
 
 // create function
-app.post('/', (req, res) => {
+app.post('/records', (req, res) => {
   const { name, category, date, amount } = req.body
   return Record.create({ name, category, date, amount })
     .then(() => res.redirect('/'))
