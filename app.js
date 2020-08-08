@@ -13,9 +13,9 @@ const port = 3000
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-app.use(express.static('public'))
 
 mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -60,13 +60,35 @@ app.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// edit 
+// edit
 app.get('/:id/edit', (req, res) => {
+  const id = req.params.id
   return Record.findById(id)
     .lean()
     .then((record) => res.render('edit', { record }))
     .catch(error => console.log(error))
 })
+
+// edit update function
+app.post('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, req.body)
+      return record.save()
+    })
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
+})
+
+// // delete
+// app.delete('/:id', (req, res) => {
+//   const id = req.params.id
+//   return Record.findById(id)
+//     .then(record => record.remove())
+//     .then(() => res.redirect('/'))
+//     .catch(error => console.log(error))
+// })
 
 app.listen(port, () => {
   console.log(`The app is running on localhost:${port}`)
