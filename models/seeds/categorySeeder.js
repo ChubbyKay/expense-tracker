@@ -9,6 +9,27 @@ db.on('error', () => {
 })
 
 db.once('open', () => {
-  Category.create({ food: true })
-  console.log('mongodb connected!')
+  Category.create(
+    {
+      categoryName: '家居物業',
+      categoryIcon: 'fas fa-home'
+    },
+    {
+      categoryName: '交通出行',
+      categoryIcon: 'fas fa-shuttle-van'
+    },
+    {
+      categoryName: '休閒娛樂',
+      categoryIcon: 'fas fa-grin-beam'
+    },
+    {
+      categoryName: '餐飲食品',
+      categoryIcon: 'fas fa-utensils'
+    },
+    {
+      categoryName: '其他',
+      categoryIcon: 'fas fa-pen'
+    }
+  )
+  console.log('category mongodb connected!')
 })

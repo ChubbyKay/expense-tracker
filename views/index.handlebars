@@ -26,31 +26,33 @@
   <div class="container mt-5">
     <div class="list-group">
 
-      {{!-- {{#each record}} --}}
+      {{#each record}}
       <li class="list-group-item">
 
-        <div class="list-left">
-          <div class="category-icon"><i class="fas fa-home"></i>{{this.icon}}</div>
-        </div>
+        <a href="/record/{{ this._id }}" class="text-secondary">
+          <div class="list-left">
+            <div class="category-icon"><i class="{{#each category}}{{this.categoryIcon}}{{/each}}"></i></div>
+          </div>
 
 
-        <div class="list-middle">
-          <div class="list-name">午餐{{this.name}}</div>
-          <div class="list-date">2020/8/2{{this.date}}</div>
-        </div>
+          <div class="list-middle">
+            <div class="list-name">{{this.name}}</div>
+            <div class="list-date">{{this.date}}</div>
+          </div>
 
 
-        <div class="list-right">
-          <div class="list-amount ml-2">200元{{this.amount}}</div>
-        </div>
-        <div class="list-button">
-          <a class="btn btn-success" href="/edit">修改</a>
-          <form action="/delete" method="POST" style="display: inline;">
-            <button class="btn btn-danger ml-2" type="submit">刪除</button>
-          </form>
-        </div>
+          <div class="list-right">
+            <div class="list-amount ml-2">{{this.amount}}</div>
+          </div>
+          <div class="list-button">
+            <a class="btn btn-success" href="records/{{ this._id }}/edit">修改</a>
+            <form action="/delete/{{this._id}}" method="POST" style="display: inline;">
+              <button class="btn btn-danger ml-2" type="submit">刪除</button>
+            </form>
+          </div>
       </li>
-      {{!-- {{/each}} --}}
+      </a>
+      {{/each}}
 
     </div>
   </div>
