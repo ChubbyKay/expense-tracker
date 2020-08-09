@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// filter
+// category filter
 router.get('/filter/:category/:mode', (req, res) => {
   const category = req.params.category
   const mode = req.params.mode

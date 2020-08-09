@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const Handlebars = require('handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
@@ -16,6 +17,11 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(routes)
+
+// icon handlebars
+Handlebars.registerHelper('ifEquals', function (category, categorySelected, options) {
+  return (category === categorySelected) ? options.fn(this) : options.inverse(this)
+})
 
 app.listen(port, () => {
   console.log(`The app is running on localhost:${port}`)

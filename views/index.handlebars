@@ -1,20 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
 
-    {{!-- <!--category bar-->
-
-    <label class="mr-sm-2 sr-only" for="category">Category</label>
-    <select class="custom-select mr-sm-2" id="category">
-      <option selected>類別...</option>
-      <option value="family">家居物業</option>
-      <option value="transportation">交通外出</option>
-      <option value="entertainment">休閒娛樂</option>
-      <option value="food">餐飲食品</option>
-      <option value="other">其他</option>
-    </select>
-  </div> --}}
-
-    <!-- sort -->
+    <!-- category filter bar -->
     <div class="container mt-3">
       <div class="justify-content-start">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -46,12 +33,14 @@
         {{#each record}}
         <li class="list-group-item">
 
-          {{!-- <a href="/record/{{ this._id }}" class="text-secondary"> --}}
+
           <div class="list-left">
             <div class="category-icon">
-              {{#each category}}
-              <i class="">{{this.categoryIcon}}</i>
-              {{/each}}
+              {{#ifEquals this.category 'family'}}<i class="fas fa-home"></i>{{/ifEquals}}
+              {{#ifEquals this.category 'transportation'}}<i class="fas fa-shuttle-van"></i>{{/ifEquals}}
+              {{#ifEquals this.category 'entertainment'}}<i class="fas fa-grin-beam"></i>{{/ifEquals}}
+              {{#ifEquals this.category 'food'}}<i class="fas fa-utensils"></i>{{/ifEquals}}
+              {{#ifEquals this.category 'other'}}<i class="fas fa-pen"></i>{{/ifEquals}}
             </div>
           </div>
 
@@ -72,7 +61,7 @@
             </form>
           </div>
         </li>
-        {{!-- </a> --}}
+
         {{/each}}
 
       </div>
