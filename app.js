@@ -24,6 +24,6 @@ Handlebars.registerHelper('ifEquals', function (category, categorySelected, opti
 })
 
 app.listen(PORT, () => {
-  console.log(`The app is running on localhost:${port}`)
+  console.log(`The app is running on localhost:${PORT}`)
 })
 
