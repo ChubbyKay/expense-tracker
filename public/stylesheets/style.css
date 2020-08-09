@@ -8,18 +8,22 @@
 
 .list-name {
   font-size: 20px;
+  text-align: left;
 }
 
 .list-date {
   font-size: 10px;
+  text-align: left;
 }
 
 .category-icon {
   font-size: 25px;
+  text-align: left;
 }
 
 .list-amount {
   font-size: 20px;
+  text-align: left;
 }
 
 
