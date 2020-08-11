@@ -24,5 +24,9 @@ db.once('open', () => {
       categoryIcon: 'fas fa-pen'
     }
   )
-  console.log('category mongodb connected!')
+    .then(() => {
+      console.log('category mongodb connected!')
+      db.close()
+    })
+    .catch(error => console.log(error))
 })

@@ -11,7 +11,7 @@ db.once('open', () => {
     },
     {
       name: '貓跳台',
-      category: 'home',
+      category: 'family',
       date: '2020-08-02',
       amount: '2000'
     },
@@ -34,5 +34,9 @@ db.once('open', () => {
       amount: '20000'
     }
   )
-  console.log('record mongodb connected!')
+    .then(() => {
+      console.log('record mongodb connected!')
+      db.close()
+    })
+    .catch(error => console.log(error))
 })
