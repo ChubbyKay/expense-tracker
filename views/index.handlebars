@@ -53,7 +53,8 @@
           </div>
           <div class="list-button">
             <a href="records/{{ this._id }}/edit" class="btn btn-success">修改</a>
-            <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+            <form action="/records/{{this._id}}?_method=DELETE" method="POST"
+              onsubmit="return confirm('確定刪除 {{this.name}} 嗎？')" style="display: inline;">
               <button class="btn btn-danger ml-2" type="submit">刪除</button>
             </form>
           </div>
