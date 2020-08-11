@@ -1,34 +1,44 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <h3 class="create-restaurant-page">修改支出</h3>
+    <div class="row justify-content-end">
+      <div class="col-4">
+        <h3>修改支出</h3>
+      </div>
+      <div class="col-4">
+        <p>*為必填</p>
+      </div>
+      <div class="container mt-4">
+        <div class="row justify-content-center">
+          <form action="/records/{{record._id}}?_method=PUT" method="POST">
 
-    <div class="container mt-4">
-      <div class="row justify-content-center">
-        <form action="/records/{{record._id}}?_method=PUT" method="POST">
+            <label for="name">名稱*：</label>
+            <input type="text" placeholder="樂透" id="name" name="name" value="{{ record.name }}"><br><br>
+            <label for="date">日期*：</label>
+            <input type="date" id="date" name="date" value="{{ record.date }}"><br><br>
 
-          <label for="name">名稱*：</label>
-          <input type="text" placeholder="樂透" id="name" name="name" value="{{ record.name }}"><br><br>
-          <label for="date">日期*：</label>
-          <input type="date" id="date" name="date" value="{{ record.date }}"><br><br>
+            <label for="category">類別*：</label>
+            <select class="category-select" id="category" name="category" value="{{ record.category }}">
+              <option value="" name="">--請選擇一個類別--</option>
+              <option value="family" name="family">家居物業</option>
+              <option value="transportation" name="transportation">交通外出</option>
+              <option value="entertainment" name="entertainment">休閒娛樂</option>
+              <option value="food" name="food">餐飲食品</option>
+              <option value="other" name="other">其他</option>
+            </select><br><br>
 
-          <label for="category">類別*：</label>
-          <select class="category-select" id="category" name="category" value="{{ record.category }}">
-            <option value="" name="">--請選擇一個類別--</option>
-            <option value="family" name="family">家居物業</option>
-            <option value="transportation" name="transportation">交通外出</option>
-            <option value="entertainment" name="entertainment">休閒娛樂</option>
-            <option value="food" name="food">餐飲食品</option>
-            <option value="other" name="other">其他</option>
-          </select><br><br>
+            <label for="amount">金額*：</label>
+            <input type="text" id="amount" name="amount" value="{{ record.amount }}"><br><br>
 
-          <label for="amount">金額*：</label>
-          <input type="text" id="amount" name="amount" value="{{ record.amount }}"><br><br>
-
-          <div class="justify-content-center">
-            <button class="btn btn-success" type="submit">儲存修改</button>
-            <a href="/" class="btn btn-primary">返回首頁</a>
-          </div>
-        </form>
+            <div class="row justify-content-center">
+              <div class="col-4">
+                <button class="btn btn-success" type="submit">儲存</button>
+              </div>
+              <div class="col-4">
+                <a href="/" class="btn btn-primary">返回</a>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
