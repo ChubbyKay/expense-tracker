@@ -37,6 +37,27 @@
                 <a href="/" class="btn btn-primary">返回</a>
               </div>
             </div>
+
+            {{#if alert}}
+            <div class="container mt-3">
+              <div class="row justify-content-center">
+                <div class="alert alert-danger" role="alert">
+                  <span class="mr-2">小叮嚀：</span><code>{{alert}}</code>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{#if amountAlert}}
+            <div class="container mt-3">
+              <div class="row justify-content-center">
+                <div class="alert alert-danger" role="alert">
+                  <span class="mr-2">小叮嚀：</span><code>{{amountAlert}}</code>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
           </form>
         </div>
       </div>
