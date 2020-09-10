@@ -17,6 +17,10 @@ const recordSchema = new Schema({
   amount: {
     type: Number,
     require: true,
+  },
+  merchant: {
+    type: String,
+    require: false,
   }
 })
 
