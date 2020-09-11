@@ -6,7 +6,8 @@ const Category = require('../../models/category')
 
 // index page
 router.get('/', (req, res) => {
-  Record.find()
+  const userId = req.user._id
+  Record.find({ userId })
     .lean()
     .then(record => {
       let totalAmount = 0

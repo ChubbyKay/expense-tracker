@@ -10,6 +10,7 @@ router.get('/new', (req, res) => {
 
 // create function
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const { name, category, date, amount } = req.body
 
   // 漏填資料提示
@@ -31,15 +32,16 @@ router.post('/', (req, res) => {
         res.render('new', { amountAlert })
       )
   }
-  return Record.create({ name, category, date, amount })
+  return Record.create({ userId, name, category, date, amount })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 // edit
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .lean()
     .then((record) => res.render('edit', { record }))
     .catch(error => console.log(error))
@@ -47,25 +49,25 @@ router.get('/:id/edit', (req, res) => {
 
 // edit update function
 router.put('/:id', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
   const { name, category, date, amount } = req.body
-  console.log('日期', req.body.mouth)
+  // console.log('日期', req.body.mouth)
 
-  return Record.findById(id)
+  return Record.findOne({ userId, _id })
     .then(record => {
       record = Object.assign(record, req.body)
       return record.save()
     })
-
-
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
 
 // delete
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findById({ _id, userId })
     .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
