@@ -23,6 +23,13 @@ Handlebars.registerHelper('ifEquals', function (category, categorySelected, opti
   return (category === categorySelected) ? options.fn(this) : options.inverse(this)
 })
 
+// // category select handlebars
+// Handlebars.registerHelper('currentSelected', function (select, currentSelect) {
+//   if (select === currentSelect) {
+//     return 'selected'
+//   }
+// })
+
 app.listen(PORT, () => {
   console.log(`The app is running on localhost:${PORT}`)
 })

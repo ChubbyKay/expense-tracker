@@ -22,7 +22,8 @@ router.post('/', (req, res) => {
       )
       .catch(error => console.log(error))
     // 金額錯誤提示
-  } else if (amount !== Number) {
+  }
+  else if (amount !== Number) {
     const amountAlert = '金額請輸入數字,如 1200 '
     return Record.find()
       .lean()
@@ -48,6 +49,7 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const { name, category, date, amount } = req.body
+  console.log('日期', req.body.mouth)
 
   return Record.findById(id)
     .then(record => {
