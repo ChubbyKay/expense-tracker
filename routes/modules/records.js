@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
       .catch(error => console.log(error))
     // 金額錯誤提示
   }
-  else if (amount !== Number) {
+  else if (isNaN(Number(amount))) {
     const amountAlert = '金額請輸入數字,如 1200 '
     return Record.find()
       .lean()
