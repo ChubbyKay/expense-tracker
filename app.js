@@ -42,17 +42,10 @@ app.use((req, res, next) => {
 app.use(routes)
 
 
-// icon handlebars
-Handlebars.registerHelper('ifEquals', function (category, categorySelected, options) {
-  return (category === categorySelected) ? options.fn(this) : options.inverse(this)
+// equals handlebars
+Handlebars.registerHelper('ifEquals', function (a, b, options) {
+  return (a === b) ? options.fn(this) : options.inverse(this)
 })
-
-// // category select handlebars
-// Handlebars.registerHelper('currentSelected', function (select, currentSelect) {
-//   if (select === currentSelect) {
-//     return 'selected'
-//   }
-// })
 
 app.listen(PORT, () => {
   console.log(`The app is running on localhost:${PORT}`)

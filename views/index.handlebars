@@ -1,72 +1,27 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
 
-    {{!-- <!-- category filter bar -->
+    <!-- filter bar -->
     <div class="container mt-3">
       <div class="justify-content-start">
-        <form action="/filter" method="get">
-          <select class="input-group-prepend" name="categoryFilter" id="categoryFilter" onchange="this.form.submit()">
-            <option value="">類別</option>
-            <option value="家居物業" {{#currentSelected this.category "家居物業"}} {{/currentSelected}}>家居物業
-            </option>
-            <option value="交通出行" {{#currentSelected this.category "交通外出"}} {{/currentSelected}}>交通出行</option>
-            <option value="休閒娛樂" {{#currentSelected this.category "休閒娛樂"}} {{/currentSelected}}>休閒娛樂</option>
-            <option value="餐飲食品" {{#currentSelected this.category "餐飲食品"}} {{/currentSelected}}>餐飲食品</option>
-            <option value="其他" {{#currentSelected this.category "其他"}} {{/currentSelected}}>其他</option>
-          </select>
+        <form action="/filter" method="GET">
+          <div class="filter-months">
+            <input type="month" id="monthFilter" name="monthFilter" value="{{this.selectMonth}}">
+          </div>
+          <br />
+          <div class="filter-categories">
+            <select class="input-group-prepend" name="categoryFilter" id="categoryFilter" onchange="this.form.submit()">
+              <option value="all">類別</option>
+              <option value="family">家居物業</option>
+              <option value="transportation">交通出行</option>
+              <option value="entertainment">休閒娛樂</option>
+              <option value="food">餐飲食品</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
         </form>
       </div>
-    </div> --}}
-
-    <!-- category filter bar -->
-    <div class="container mt-3">
-      <div class="justify-content-start">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          消費類別{{#if filterOption}} {{filterOption}}{{/if}}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/filter/family/asc" name="family"> 家居物業 </a>
-          <a class="dropdown-item" href="/filter/transportation/asc" name="transportation"> 交通外出 </a>
-          <a class="dropdown-item" href="/filter/entertainment/asc" name="entertainment">休閒娛樂</a>
-          <a class="dropdown-item" href="/filter/food/asc" name="food">餐飲食品</a>
-          <a class="dropdown-item" href="/filter/other/asc" name="other">其他</a>
-        </div>
-      </div>
     </div>
-
-    {{!-- <!-- mouth filter bar -->
-    <div class="container mt-3">
-      <div class="justify-content-start">
-        <div class="filter-mouth">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            月支出
-            {{#if mouthFilterOption}} {{mouthFilterOption}}{{/if}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/filter/january/asc" name="january"> 1月份</a>
-            <a class="dropdown-item" href="/filter/
-february/asc" name="february"> 2月份</a>
-            <a class="dropdown-item" href="/filter/march/asc" name="march"> 3月份</a>
-            <a class="dropdown-item" href="/filter/april/asc" name="april"> 4月份</a>
-            <a class="dropdown-item" href="/filter/may/asc" name="may"> 5月份</a>
-            <a class="dropdown-item" href="/filter/june/asc" name="june"> 6月份</a>
-            <a class="dropdown-item" href="/filter/july/asc" name="july"> 7月份</a>
-            <a class="dropdown-item" href="/filter/august/asc" name="august"> 8月份</a>
-            <a class="dropdown-item" href="/filter/
-september/asc" name="
-september"> 9月份</a>
-            <a class="dropdown-item" href="/filter/october/asc" name="october"> 10月份</a>
-            <a class="dropdown-item" href="/filter/november/asc" name="november"> 11月份</a>
-            <a class="dropdown-item" href="/filter/december/asc" name="december"> 12月份</a>
-          </div>
-        </div>
-      </div>
-    </div> --}}
-
-
-
 
     <!--total Amount-->
     <div class="totalAmount m-5">
@@ -80,7 +35,7 @@ september"> 9月份</a>
     <div class="container mt-5">
       <div class="list-group">
 
-        {{#each record}}
+        {{#each records}}
         <li class="list-group-item">
 
           <div class="list-left">
