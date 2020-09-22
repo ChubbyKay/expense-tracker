@@ -1,10 +1,16 @@
 # 老爸的私房錢 
-使用Node.js + Express打造的記帳網站，提供使用者依每筆消費金額計算總消費額度，也可依消費類別計算該類別總消費金額；亦可自行新增單筆消費項目。
+使用Node.js + Express + Mongoose 打造的記帳網站，提供使用者依每筆消費金額計算總消費額度，也可依消費類別計算該類別總消費金額；亦可自行新增單筆消費項目。
 
 ## 產品功能 
 ・使用者可透過消費項目，計算總消費金額<br>
 ・使用者可透過消費類別，計算該類別總消費金額<br>
+・使用者可透過月份及消費類別，計算消費金額<br>
 ・使用者可新增、編輯、刪除消費內容（含項目、金額、類別、日期）<br>
+
+## 測試帳號
+Name: root<br>
+Email: root@example.com<br>
+Password: 12345678<br>
 
 ## 安裝方式 
 1. 開啟終端機，進入至欲儲存此專案的資料夾，並clone此專案
@@ -29,4 +35,10 @@
 ・ Mongoose v5.9.27<br>
 ・ Body-parser v1.19.0<br>
 ・ Method-Override v3.0.0<br>
- 
+・ bcryptjs v2.4.3<br>
+・ connect-flash v0.1.1<br>
+・ dotenv v8.2.0<br>
+・ express-session v1.17.1<br>
+・ passport v0.4.1<br>
+・ passport-facebook v3.0.0<br>
+・ passport-local v1.0.0<br>
