@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const Category = require('../category')
 const db = require('../../config/mongoose')
 
@@ -26,7 +30,7 @@ db.once('open', () => {
   )
     .then(() => {
       console.log('category mongodb connected!')
-      db.close()
+      process.exit()
     })
     .catch(error => console.log(error))
 })
